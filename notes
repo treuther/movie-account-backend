@@ -1,0 +1,11 @@
+Genre
+has_many :movies
+:name - string
+
+
+Movie
+belongs_to :genre
+:genre_id - integer
+:title - string
+:rating - string
+:description - string
