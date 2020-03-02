@@ -1,5 +1,7 @@
 class Api::V1::MoviesController < ApplicationController
 
+    before_action :set_genre # before any action takes place, run this method.
+
     def index
         @movies = Movie.all
         render json: @movies
@@ -29,6 +31,9 @@ class Api::V1::MoviesController < ApplicationController
         @movie = Movie.find(params[:id])
         @movie.detroy
         render json: @movies
+    end
+
+    def set_genre
     end
 
     private
