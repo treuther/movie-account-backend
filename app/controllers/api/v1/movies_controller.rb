@@ -3,8 +3,8 @@ class Api::V1::MoviesController < ApplicationController
     before_action :set_genre # before any action takes place, run this method.
 
     def index
-        @movies = Movie.all
-        render json: @movies
+        movies = @genre.movies
+        render json: movies
     end
 
     def create
@@ -34,6 +34,7 @@ class Api::V1::MoviesController < ApplicationController
     end
 
     def set_genre
+        @genre = Genre.find(params[:genre_id])
     end
 
     private
