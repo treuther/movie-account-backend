@@ -2,35 +2,33 @@ class Api::V1::MoviesController < ApplicationController
 
     before_action :set_genre # before any action takes place, run this method.
 
+    #movies belong to a genre. Go through genres to get to movies.
     def index
         movies = @genre.movies
         render json: movies
     end
 
     def create
-        @movie = Movie.new(movie_params)
-        if @movie.save
-            render json: @movie
+        movie = @genre.movies.new(movie_params)
+        if @genre.check_dupes(movie) != 'Movie title already exists.'
+            movie.save
+            render json: movie
         else
-            render json: {error: 'Error creating movie. Try again.'}
+            render json: {error: 'Movie title already exists.'}
         end
     end
 
     def show
-        @movie = Movie.find(params[:id])
-        render json: @movie
+        movie = Movie.find(params[:id])
+        render json: movie
     end
 
     def update
-        @movie = Movie.find(params[:id])
-        movie.update(movie_params)
-        render json: @movie #or does this need to be new(movie)?
+        
     end
 
     def destroy
-        @movie = Movie.find(params[:id])
-        @movie.detroy
-        render json: @movies
+
     end
 
     def set_genre

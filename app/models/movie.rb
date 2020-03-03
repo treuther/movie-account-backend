@@ -9,12 +9,12 @@ class Movie < ApplicationRecord
 
     # if movie title already exists, cannot save again.
 
-    # def check_dupes(movie)
-    #     if self.title !== movie.title
-    #         self.save
-    #     else
-    #         return 'movie title already exists'
-    #     end
-    # end
+    def check_dupes(movie)
+        if self.title == movie.title
+            return 'Movie title already exists.'
+        else
+            self.save
+        end
+    end
     
 end
