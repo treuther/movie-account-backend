@@ -22,7 +22,7 @@ class Api::V1::GenresController < ApplicationController
     def update
         genre = Genre.find(params[:id])
         genre.update(genre_params)
-        render json: genre #or does this need to be new(genre)?
+        render json: genre #or does this need to be new(genre) Change once discovered?
     end
 
     def destroy
