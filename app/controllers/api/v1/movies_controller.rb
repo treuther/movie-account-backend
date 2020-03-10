@@ -10,11 +10,10 @@ class Api::V1::MoviesController < ApplicationController
 
     def create
         movie = @genre.movies.new(movie_params)
-        if @genre.check_dupes(movie) != 'Movie title already exists.'
-            movie.save
+        if movie.save
             render json: @genre
         else
-            render json: {error: 'Movie title already exists.'}
+            render json: {error: 'Error saving movie.'}
         end
     end
 
