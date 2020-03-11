@@ -27,11 +27,10 @@ class Api::V1::MoviesController < ApplicationController
     end
 
     def destroy
-        binding.pry
-        # movie = Movie.find(params["id"])
-        # genre = Genre.find(movie.genre_id)
-        # movie.detroy
-        # render json: genre
+        movie = Movie.find(params["id"])
+        genre = Genre.find(movie.genre_id)
+        movie.destroy
+        render json: genre
 
     end
 

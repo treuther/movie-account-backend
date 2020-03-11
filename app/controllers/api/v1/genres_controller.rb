@@ -26,7 +26,6 @@ class Api::V1::GenresController < ApplicationController
     end
 
     def destroy
-        binding.pry
         # genre = Genre.find(params["id"])
         # genre.detroy
         # render json: genres
