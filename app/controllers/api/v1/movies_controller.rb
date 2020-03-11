@@ -13,7 +13,7 @@ class Api::V1::MoviesController < ApplicationController
         if movie.save
             render json: @genre
         else
-            render json: {error: 'Error saving movie.'}
+            render json: {error: 'Movie already exists.'}
         end
     end
 
