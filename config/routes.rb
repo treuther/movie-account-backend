@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #nesting movies with genres
   namespace :api do
     namespace :v1 do
+      resources :movies
       resources :genres do
         resources :movies
       end
