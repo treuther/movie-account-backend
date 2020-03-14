@@ -1,7 +1,7 @@
 class CreateNotes < ActiveRecord::Migration[6.0]
   def change
     create_table :notes do |t|
-      t. :movie_id
+      t.integer :movie_id
       t.string :content
 
       t.timestamps
