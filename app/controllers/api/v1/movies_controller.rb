@@ -8,6 +8,17 @@ class Api::V1::MoviesController < ApplicationController
         render json: movies
     end
 
+    # def index #good to nest to show all reviews for 1 product, based on URL path
+    #     #how to check if nested
+    #     if @product = Product.find_by_id(params[:product_id])
+    #     #nested
+    #         @reviews = @product.reviews
+    #     else
+    #     #not nested
+    #         @reviews = Review.all
+    #     end
+    # end
+
     def create
         movie = @genre.movies.new(movie_params)
         if movie.save
