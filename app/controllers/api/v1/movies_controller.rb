@@ -1,11 +1,20 @@
 class Api::V1::MoviesController < ApplicationController
 
-    before_action :set_genre # before any action takes place, run this method.
+    # before_action :set_genre # before any action takes place, run this method.
     # movies = @genre.movies
 
     #movies belong to a genre. Go through genres to get to movies.
     def index
-        movies = @genre.movies
+        # movies = @genre.movies
+        # render json: movies
+
+        if genre = Genre.find_by_id(params[:genre_id])
+            #nested
+                movies = genre.movies
+            else
+            #not nested
+                movies = Movie.all
+            end
         render json: movies
     end
 
