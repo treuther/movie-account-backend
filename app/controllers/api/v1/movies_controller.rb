@@ -19,9 +19,9 @@ class Api::V1::MoviesController < ApplicationController
     end
 
     def create
-        movie = @genre.movies.new(movie_params)
+         movie = set_genre.movies.new(movie_params)
         if movie.save
-            render json: @genre
+            render json: @genre # @genre
         else
             render json: {error: 'Movie already exists.'}
         end
@@ -40,7 +40,7 @@ class Api::V1::MoviesController < ApplicationController
         movie = Movie.find(params["id"])
         genre = Genre.find(movie.genre_id)
         movie.destroy
-        render json: genre
+        render json: @genre
 
     end
 
